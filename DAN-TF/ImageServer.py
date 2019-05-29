@@ -57,7 +57,7 @@ class ImageServer(object):
             filenamesInDir += glob.glob(imageDirs[i] + "*.png")
             # import pdb; pdb.set_trace()
             if boundingBoxFiles is not None:
-                boundingBoxDict = pickle.load(open(boundingBoxFiles[i], 'rb'))
+                boundingBoxDict = pickle.load(open(boundingBoxFiles[i], 'rb'),encoding='bytes')
 
             for j in range(len(filenamesInDir)):
                 filenames.append(filenamesInDir[j])
@@ -254,5 +254,4 @@ class ImageServer(object):
 
         groundTruth = np.dot(groundTruth, A) + t
         return outImg, initShape, groundTruth
-
 
